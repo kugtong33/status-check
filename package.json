@@ -4,7 +4,8 @@
   "description": "Status Check Microservice",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/kugtong33/status-check/issues"
   },
-  "homepage": "https://github.com/kugtong33/status-check#readme"
+  "homepage": "https://github.com/kugtong33/status-check#readme",
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  },
+  "dependencies": {
+    "nodemailer": "^1.11.0"
+  }
 }

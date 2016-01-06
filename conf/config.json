@@ -1,0 +1,39 @@
+{
+  "checks": [
+    {
+      "id": "EG",
+      "type": "http",
+      "port": 80,
+      "path": "/ping",
+      "address": "52.76.216.3",
+      "responseTimeout": 5,
+      "checkInterval": 30,
+      "unhealthyThreshold": 2,
+      "healthyThreshold": 10
+    },
+    {
+      "id": "EG Server 1",
+      "type": "ping",
+      "address": "52.76.216.3",
+      "responseTimeout": 5,
+      "checkInterval": 30,
+      "unhealthyThreshold": 2,
+      "healthyThreshold": 10
+    }
+  ],
+  "alerts": [
+    {
+      "checks": "EG",
+      "type": "email",
+      "address": "roger.madjos@gmail.com"
+    },
+    {
+      "checks": "EG.*",
+      "type": "email",
+      "address": "usman@proto-garage.com",
+      "statuses": [
+        "unhealthy"
+      ]
+    }
+  ]
+}
