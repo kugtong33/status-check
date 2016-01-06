@@ -1,0 +1,23 @@
+{
+  "name": "status-check",
+  "version": "0.0.1",
+  "description": "Status Check Microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kugtong33/status-check.git"
+  },
+  "keywords": [
+    "Microservice",
+    "Monitoring"
+  ],
+  "author": "Arjay Sitoy <sitoy.arjay@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kugtong33/status-check/issues"
+  },
+  "homepage": "https://github.com/kugtong33/status-check#readme"
+}
