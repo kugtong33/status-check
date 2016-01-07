@@ -7,7 +7,7 @@
       "path": "/ping",
       "address": "52.76.216.3",
       "responseTimeout": 5,
-      "checkInterval": 30,
+      "checkInterval": 5,
       "unhealthyThreshold": 2,
       "healthyThreshold": 10
     },
@@ -16,7 +16,7 @@
       "type": "ping",
       "address": "52.76.216.3",
       "responseTimeout": 5,
-      "checkInterval": 30,
+      "checkInterval": 5,
       "unhealthyThreshold": 2,
       "healthyThreshold": 10
     }
