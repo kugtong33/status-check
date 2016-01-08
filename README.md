@@ -1,4 +1,4 @@
-Status Check Microservice
+Status Check Microservice [![Build Status](https://travis-ci.org/kugtong33/status-check.svg?branch=master)](https://travis-ci.org/kugtong33/status-check)
 -------------------------
 
 The `Status Check Microservice` will monitor our server applications and will send alerts when a downtime happens. The microservice will need to accept a json configuration file `config.json` with a format similar to the following example:
