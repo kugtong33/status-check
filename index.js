@@ -8,6 +8,15 @@ var config = require('./conf/config.json'),
  * - Add Alert Object for email capabilities
  * - Add on exit event for clean exit when exiting this process
  * - Fix config data checker
+ *
+ *
+ * A Testing Framework (Mocha, Vows, Intern)
+ * An Assertion Library (Chai, Assert)
+ * Stubs (Sinon)
+ * Module Control (Mockery, Rewire)
+ *
+ * http://fredkschott.com/post/2014/05/nodejs-testing-essentials/
+ *
  * /
 
 

@@ -1,8 +1,8 @@
 var validator = require('../lib/config-validator'),
     assert = require('assert');
 
-describe('When config data is valid', function () {
-    describe('no default data is missing', function () {
+describe('Given config data is valid', function () {
+    describe('When no default data is missing', function () {
         var config = {
             checks: [
                 {
@@ -35,7 +35,7 @@ describe('When config data is valid', function () {
         });
     });
 
-    describe('default data are missing', function () {
+    describe('When default data are missing', function () {
         var config = {
                 checks: [
                     {
@@ -83,8 +83,8 @@ describe('When config data is valid', function () {
     });
 });
 
-describe('When config is invalid', function () {
-    describe('invalid for checks', function () {
+describe('Given config is invalid', function () {
+    describe('When invalid for checks', function () {
         var config = {
             checks: [
                 {
@@ -108,7 +108,7 @@ describe('When config is invalid', function () {
         });
     });
 
-    describe('invalid for alerts', function () {
+    describe('When invalid for alerts', function () {
         var config = {
             checks: [
                 {
