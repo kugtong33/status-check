@@ -1,4 +1,5 @@
 var config = require('./conf/config.json'),
+    validator = require('./lib/config-validator'),
     child_process = require('child_process');
 
 /*
@@ -20,17 +21,11 @@ var config = require('./conf/config.json'),
  * /
 
 
- /* Incomplete config checker function */
-(function check(config) {
+ /* validate config */
+validator.validate(config);
 
-
-    /* Check config data for required values */
-
-})(config);
-
-console.log(config);
-
-//config.checks.forEach(function (instance) {
-//    var worker = child_process.fork(__dirname + '/lib/checker.js');
-//    worker.send(instance);
-//});
+config.checks.forEach(function (check) {
+    var worker = child_process.fork(__dirname + '/lib/checker.js');
+    check.alerts = config.alerts;
+    worker.send(check);
+});
