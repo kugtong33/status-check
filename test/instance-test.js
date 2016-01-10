@@ -26,7 +26,7 @@ var Instance = require('../lib/instance').Instance,
 
 describe('Given status is unknown', function () {
     describe('When notified with \'healthy\'', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
 
         it('should increment healthy threshold counter', function () {
             var expected = {
@@ -40,7 +40,7 @@ describe('Given status is unknown', function () {
     });
 
     describe('When notified with \'healthy\' threshold times', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         it('should change its status to healthy', function () {
             var expected = {
                 content: 'healthy'
@@ -54,7 +54,7 @@ describe('Given status is unknown', function () {
     });
 
     describe('When notified with \'unhealthy\'', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         it('should increment unhealthy threshold counter', function () {
 
             var expected = {
@@ -68,7 +68,7 @@ describe('Given status is unknown', function () {
     });
 
     describe('When notified with \'unhealthy\' threshold times', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         it('should change its status to unhealthy', function () {
             var expected = {
                 content: 'unhealthy'
@@ -84,7 +84,7 @@ describe('Given status is unknown', function () {
 
 describe('Given status is healthy', function () {
     describe('When notified with \'healthy\'', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         instance.setStatus({
             content: 'healthy'
         });
@@ -101,7 +101,7 @@ describe('Given status is healthy', function () {
     });
 
     describe('When notified with \'unhealthy\'', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         instance.setStatus({
             content: 'healthy'
         });
@@ -119,7 +119,7 @@ describe('Given status is healthy', function () {
     });
 
     describe('When notified with \'unhealthy\' threshold times', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         instance.setStatus({
             content: 'healthy'
         });
@@ -139,7 +139,7 @@ describe('Given status is healthy', function () {
 
 describe('Given status is unhealthy', function () {
     describe('When notified with \'unhealthy\'', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         instance.setStatus({
             content: 'unhealthy'
         });
@@ -156,7 +156,7 @@ describe('Given status is unhealthy', function () {
     });
 
     describe('When notified with \'healthy\'', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         instance.setStatus({
             content: 'unhealthy'
         });
@@ -174,7 +174,7 @@ describe('Given status is unhealthy', function () {
     });
 
     describe('When notified with \'healthy\' threshold times', function () {
-        var instance = new Instance();
+        var instance = new Instance(Object.create(config).checks[0]);
         instance.setStatus({
             content: 'unhealthy'
         });
