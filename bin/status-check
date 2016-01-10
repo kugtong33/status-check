@@ -1,0 +1,63 @@
+#!/usr/bin/env node
+
+var child_process = require('child_process'),
+    forever = require('forever'),
+    http = require('http'),
+    commander = require('commander'),
+    package = require('../package.json');
+
+commander.version(package.version)
+    .option('-s, --start', 'Starts the microservice')
+    .option('-e, --exit', 'Exits the microservice')
+    .option('-r, --restart', 'Restarts the microservice')
+    .option('-l, --list', 'Lists the status of all the observed containers')
+    .parse(process.argv);
+
+
+if (commander.start) {
+    var child = forever.startDaemon('index.js', {
+        max: 3,
+        silent: true,
+        args: []
+    });
+
+    child.on('start', function () {
+        /* request start api */
+        http.get({
+            hostname: '127.0.0.1',
+            port: 4321,
+            path: '/start'
+        }, function (res) {
+            console.log(res.statusCode);
+        }).on('error', function (err) {
+            throw err;
+        });
+    });
+
+    child.on('exit', function () {
+        console.log('index.js has exited after 3 restarts');
+    });
+
+}
+
+if (commander.list) {
+    http.get({
+        hostname: '127.0.0.1',
+        port: 4321,
+        path: '/status'
+    }, function (res) {
+        var body = '';
+
+        res.on('data', function (chunk) {
+            body += chunk;
+        });
+
+        res.on('end', function () {
+            var list = JSON.parse(body);
+            console.log(list);
+        });
+    }).on('error', function (err) {
+        throw err;
+    });
+}
+
