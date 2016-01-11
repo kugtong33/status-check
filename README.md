@@ -66,5 +66,3 @@ Using various protocols, the microservice will send requests to the target serve
 | `alerts[].type` | `true` | | `string` | `email` | Alert type. More choices will be added in the future |
 | `alerts[].address` | `true` | | `string` | | |
 | `alerts[].statuses` | `false` | ["unhealthy","healthy"] | `array` | `healthy`, `unhealthy` | Send alert only when status changes into the ones specified |
-
-
