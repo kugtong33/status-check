@@ -10,24 +10,12 @@ var config = require('./conf/config.json'),
 validator.validate(config);
 
 server.on('connection', function (socket) {
-    socket.emit('config', cluster);
     sockets.push(socket);
 });
 
 config.checks.forEach(function (check) {
-    cluster.push({
-        config: check,
-        worker: child_process.fork(__dirname + '/lib/worker.js')
-    });
+    var worker = child_process.fork(__dirname + '/lib/worker.js');
+    check.alerts = config.alerts;
+    worker.send(check);
+    cluster.push(worker);
 });
-
-setTimeout(function () {
-    sockets.forEach(function (socket, index) {
-        socket.emit('config', cluster[index].config);
-    });
-}, 3000);
-
-
-
-
-

@@ -20,24 +20,6 @@ if (commander.start) {
         silent: true,
         args: []
     });
-
-    child.on('start', function () {
-        /* request start api */
-        http.get({
-            hostname: '127.0.0.1',
-            port: 4321,
-            path: '/start'
-        }, function (res) {
-            console.log(res.statusCode);
-        }).on('error', function (err) {
-            throw err;
-        });
-    });
-
-    child.on('exit', function () {
-        console.log('index.js has exited after 3 restarts');
-    });
-
 }
 
 if (commander.list) {
