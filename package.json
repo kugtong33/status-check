@@ -25,10 +25,13 @@
     "mocha": "^2.3.4"
   },
   "dependencies": {
+    "async": "^1.5.2",
     "commander": "^2.9.0",
     "express": "^4.13.3",
     "forever": "^0.15.1",
-    "nodemailer": "^1.11.0"
+    "nodemailer": "^1.11.0",
+    "socket.io": "^1.4.4",
+    "socket.io-client": "^1.4.4"
   },
   "bin": {
     "status-check": "./bin/status-check"
