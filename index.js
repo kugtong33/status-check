@@ -39,3 +39,18 @@ status.on('connection', function (socket) {
         });
     });
 });
+
+function exit() {
+    async.eachSeries(cluster, function (worker, callback) {
+        console.log('killing worker');
+        worker.kill('SIGINT');
+        callback();
+    }, function (err) {
+        server.close();
+        status.close();
+
+        process.exit(0);
+    });
+}
+
+process.on('SIGTERM', exit);
