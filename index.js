@@ -26,7 +26,7 @@ config.checks.forEach(function (check) {
 
 status.on('connection', function (socket) {
     socket.on('status', function () {
-        /* TODO translate using promises */
+        /* TODO translate using generators */
         async.eachSeries(sockets, function (socket, callback) {
             socket.emit('status');
             callback();
@@ -43,7 +43,7 @@ status.on('connection', function (socket) {
 
 function exit() {
     async.eachSeries(cluster, function (worker, callback) {
-        /* TODO translate using promises */
+        /* TODO translate using generators */
         worker.kill('SIGINT');
         callback();
     }, function (err) {
