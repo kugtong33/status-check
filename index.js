@@ -3,7 +3,6 @@ var config = require('./conf/config.json'),
     child_process = require('child_process'),
     cluster = [],
     sockets = [],
-    async = require('async'),
     server = require('socket.io')(4321),
     status = require('socket.io')(4322),
     report = [];
@@ -26,32 +25,23 @@ config.checks.forEach(function (check) {
 
 status.on('connection', function (socket) {
     socket.on('status', function () {
-        /* TODO translate using generators */
-        async.eachSeries(sockets, function (socket, callback) {
+        sockets.forEach(function (socket) {
             socket.emit('status');
-            callback();
-        }, function (err) {
-            if (err) {
-                throw err;
-            } else {
-                socket.emit('status', report);
-                report = [];
-            }
         });
+        socket.emit('status', report);
+        report = [];
     });
 });
 
 function exit() {
-    async.eachSeries(cluster, function (worker, callback) {
-        /* TODO translate using generators */
+    cluster.forEach(function (worker) {
         worker.kill('SIGINT');
-        callback();
-    }, function (err) {
-        server.close();
-        status.close();
-
-        process.exit(0);
     });
+
+    server.close();
+    status.close();
+
+    process.exit(0);
 }
 
 process.on('SIGTERM', exit);
