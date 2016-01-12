@@ -28,6 +28,7 @@ status.on('connection', function (socket) {
         sockets.forEach(function (socket) {
             socket.emit('status');
         });
+        console.log(report);
         socket.emit('status', report);
         report = [];
     });
