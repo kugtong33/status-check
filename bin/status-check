@@ -9,6 +9,7 @@ commander.version(package.version)
 
 
 if (commander.list) {
+    /* TODO Add response timeout on client */
     var client = require('socket.io-client').connect('http://127.0.0.1:4322');
     client.on('status', function (status) {
         status.forEach(function (instance) {

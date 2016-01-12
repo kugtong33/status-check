@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "forever start --append --uid \"status-check-service\" index.js",
+    "start": "forever start --killSignal=SIGTERM --append --uid \"status-check-service\" index.js",
     "stop": "forever stop \"status-check-service\""
   },
   "repository": {
@@ -26,7 +26,9 @@
     "mocha": "^2.3.4"
   },
   "dependencies": {
+    "ajv": "^3.2.0",
     "async": "^1.5.2",
+    "co": "^4.6.0",
     "commander": "^2.9.0",
     "forever": "^0.15.1",
     "nodemailer": "^1.11.0",
