@@ -11,6 +11,7 @@ validator.validate(config);
 
 server.on('connection', function (socket) {
     socket.on('status', function (status) {
+        /* TODO fix delay bug */
         report.push(status);
     });
     sockets.push(socket);
@@ -25,6 +26,7 @@ config.checks.forEach(function (check) {
 
 status.on('connection', function (socket) {
     socket.on('status', function () {
+        /* TODO fix report delay bug */
         sockets.forEach(function (socket) {
             socket.emit('status');
         });
