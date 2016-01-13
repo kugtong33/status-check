@@ -1,4 +1,4 @@
-var validator = require('../lib/config-validator'),
+var validator = require('../lib/validator'),
     assert = require('assert');
 
 describe('Given config data is valid', function () {

@@ -1,20 +1,20 @@
 var config = require('./conf/config.json'),
-    validator = require('./lib/config-validator'),
+    validator = require('./lib/validator'),
     child_process = require('child_process'),
     cluster = [],
-    sockets = [],
     server = require('socket.io')(4321),
-    status = require('socket.io')(4322),
-    report = [];
+    report = {};
 
 validator.validate(config);
 
 server.on('connection', function (socket) {
-    socket.on('status', function (status) {
-        /* TODO fix delay bug */
-        report.push(status);
+    socket.on('status', function (instance) {
+        report[instance.id] = instance.status;
     });
-    sockets.push(socket);
+
+    socket.on('report', function () {
+        socket.emit('report', report);
+    });
 });
 
 config.checks.forEach(function (check) {
@@ -24,26 +24,10 @@ config.checks.forEach(function (check) {
     cluster.push(worker);
 });
 
-status.on('connection', function (socket) {
-    socket.on('status', function () {
-        /* TODO fix report delay bug */
-        sockets.forEach(function (socket) {
-            socket.emit('status');
-        });
-        socket.emit('status', report);
-        report = [];
-    });
-});
-
-function exit() {
+process.on('SIGTERM', function () {
     cluster.forEach(function (worker) {
         worker.kill('SIGINT');
     });
-
     server.close();
-    status.close();
-
     process.exit(0);
-}
-
-process.on('SIGTERM', exit);
+});

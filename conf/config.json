@@ -5,7 +5,7 @@
       "type": "http",
       "port": 80,
       "path": "/ping",
-      "address": "52.76.216.3",
+      "address": "103.233.38.167",
       "responseTimeout": 5,
       "checkInterval": 5,
       "unhealthyThreshold": 2,
@@ -14,7 +14,7 @@
     {
       "id": "EG Server 1",
       "type": "ping",
-      "address": "52.76.216.3",
+      "address": "103.233.38.167",
       "responseTimeout": 5,
       "checkInterval": 5,
       "unhealthyThreshold": 2,

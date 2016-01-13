@@ -2,14 +2,14 @@
 
 var commander = require('commander'),
     package = require('../package.json'),
-    client = require('socket.io-client').connect('http://127.0.0.1:4322');
+    client = require('socket.io-client').connect('http://127.0.0.1:4321');
 
-client.on('status', function (status) {
-    if (status.length == 0) {
+client.on('report', function (report) {
+    if (Object.keys(report).length == 0) {
         console.log('Calibrating ...');
     } else {
-        status.forEach(function (instance) {
-            console.log(instance.id + ': ' + instance.status);
+        Object.keys(report).forEach(function (instance) {
+            console.log(instance + ': ' + report[instance]);
         });
     }
     client.close();
@@ -21,6 +21,6 @@ commander.version(package.version)
 
 
 if (commander.list) {
-    client.emit('status');
+    client.emit('report');
 }
 
