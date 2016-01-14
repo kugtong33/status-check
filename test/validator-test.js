@@ -104,7 +104,7 @@ describe('Given config is invalid', function () {
         it('should throw an error', function () {
             assert.throws(function () {
                 validator.validate(config)
-            }, Error, 'Invalid configuration, must have field \'address\' in checks.');
+            }, Error);
         });
     });
 
@@ -128,7 +128,7 @@ describe('Given config is invalid', function () {
         it('should throw an error', function () {
             assert.throws(function () {
                 validator.validate(config)
-            }, Error, 'Invalid configuration, must have field \'type\' in alerts.');
+            }, Error);
         });
     });
 });
