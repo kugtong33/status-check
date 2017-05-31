@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha",
     "start": "forever start --killSignal=SIGTERM --append --uid \"status-check-service\" index.js",
-    "stop": "forever stop \"status-check-service\""
+    "stop": "forever stop \"status-check-service\"",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -33,8 +35,9 @@
     "commander": "^2.9.0",
     "forever": "^0.15.1",
     "nodemailer": "^1.11.0",
-    "socket.io": "^1.4.4",
-    "socket.io-client": "^1.4.4"
+    "socket.io": "^2.0.0",
+    "socket.io-client": "^2.0.0",
+    "snyk": "^1.32.0"
   },
   "bin": {
     "status-check": "./bin/status-check"
@@ -43,5 +46,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "snyk": true
 }
