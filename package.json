@@ -28,10 +28,10 @@
   },
   "dependencies": {
     "ajv": "^3.2.0",
-    "async": "^1.5.2",
+    "async": "^3.2.2",
     "co": "^4.6.0",
     "commander": "^2.9.0",
-    "forever": "^0.15.1",
+    "forever": "^4.0.3",
     "nodemailer": "^1.11.0",
     "socket.io": "^1.4.4",
     "socket.io-client": "^1.4.4"
